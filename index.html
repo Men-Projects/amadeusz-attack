@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Amadeusz Attack 💛</title>
+<title>Atak Amadeusza 💛</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@500;800;900&display=swap');
@@ -286,32 +286,32 @@ button {
     <span class="online">● ONLINE</span>
   </div>
 
-  <h1>AMADEUSZ<br>ATTACK 💛</h1>
-  <div class="subtitle">YELLOW CHAOS EDITION</div>
+  <h1>ATAK<br>AMADEUSZA 💛</h1>
+  <div class="subtitle">ŻÓŁTA EDYCJA CHAOSU</div>
 
   <div class="marquee">
     <span>
-      💛 GOLDEN MODE 💛 AMADEUSZ.EXE 💀 POTATO POWER 🥔
-      💛 GOLDEN MODE 💛 AMADEUSZ.EXE 💀 POTATO POWER 🥔
+      💛 ZŁOTY TRYB 💛 AMADEUSZ.EXE 💀 MOC ZIEMNIAKA 🥔
+      💛 ZŁOTY TRYB 💛 AMADEUSZ.EXE 💀 MOC ZIEMNIAKA 🥔
     </span>
   </div>
 
   <form id="form">
-    <label for="ip">Target IP (visual only)</label>
+    <label for="ip">Adres IP celu (tylko wizualnie)</label>
     <input id="ip" placeholder="127.0.0.1" required>
 
-    <label for="time">Duration (seconds)</label>
+    <label for="time">Czas trwania (sekundy)</label>
     <input id="time" type="number" min="1" max="300" value="15" required>
 
-    <label for="power">Chaos Level</label>
+    <label for="power">Poziom chaosu</label>
     <select id="power">
-      <option>Bad 💀</option>
-      <option selected>Medium 🤡</option>
-      <option>Good 💛</option>
+      <option>Słaby 💀</option>
+      <option selected>Średni 🤡</option>
+      <option>Mocny 💛</option>
     </select>
 
     <button class="launch" id="launch" type="submit">
-      💛 ACTIVATE CHAOS
+      💛 AKTYWUJ CHAOS
     </button>
 
     <div class="progress" id="progress">
@@ -321,14 +321,14 @@ button {
   </form>
 
   <div class="bottom">
-    <span>GOLD BUILD</span>
-    <span>PURE NONSENSE</span>
+    <span>ZŁOTA WERSJA</span>
+    <span>CZYSTY ABSURD</span>
   </div>
 </section>
 </main>
 
 <script>
-// Golden particle background
+// Złote cząsteczki w tle
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 let particles = [];
@@ -369,7 +369,7 @@ addEventListener("resize", resize);
 resize();
 draw();
 
-// Discover all PNG files in the GitHub repository
+// Wyszukiwanie wszystkich plików PNG w repozytorium GitHub
 const repoAPI =
   "https://api.github.com/repos/Men-Projects/data-amadeo-image/git/trees/main?recursive=1";
 
@@ -382,7 +382,7 @@ const emojiLayer = document.getElementById("emojiLayer");
 
 fetch(repoAPI)
   .then(response => {
-    if (!response.ok) throw new Error("GitHub API unavailable");
+    if (!response.ok) throw new Error("Interfejs API GitHub jest niedostępny");
     return response.json();
   })
   .then(data => {
@@ -395,9 +395,9 @@ fetch(repoAPI)
 
     if (pngs.length) imageURLs = pngs;
   })
-  .catch(() => console.info("Using fallback PNG list."));
+  .catch(() => console.info("Używam zapasowej listy plików PNG."));
 
-// Images are randomly sized between 60 and 160 pixels
+// Obrazy mają losowe rozmiary od 60 do 160 pikseli
 function spawnImage() {
   if (!imageURLs.length) return;
 
@@ -434,13 +434,13 @@ function spawnEmoji() {
 setInterval(spawnImage, 900);
 setInterval(spawnEmoji, 700);
 
-// Occasional silly popups
+// Losowe, absurdalne komunikaty
 const messages = [
-  "POTATO POWER ACTIVATED 🥔",
-  "GOLDEN BRAIN CELL FOUND 💛",
-  "BRO IS COOKING 💀",
-  "DUCK APPROVED 🦆",
-  "CERTIFIED AMADEUSZ MOMENT"
+  "MOC ZIEMNIAKA AKTYWOWANA 🥔",
+  "ZNALEZIONO ZŁOTĄ KOMÓRKĘ MÓZGOWĄ 💛",
+  "STARY, ALE GOTUJE 💀",
+  "KACZKA ZATWIERDZA 🦆",
+  "KLASYCZNA AKCJA AMADEUSZA"
 ];
 
 function popup() {
@@ -454,7 +454,7 @@ function popup() {
 
 setInterval(popup, 6500);
 
-// Visual-only launch simulation
+// Uruchamianie wyłącznie symulacji wizualnej
 const form = document.getElementById("form");
 const launch = document.getElementById("launch");
 const progress = document.getElementById("progress");
@@ -468,12 +468,12 @@ form.addEventListener("submit", event => {
   const power = document.getElementById("power").value;
 
   if (!Number.isFinite(duration) || duration < 1 || duration > 300) {
-    result.textContent = "CHOOSE 1–300 SECONDS 💛";
+    result.textContent = "WYBIERZ OD 1 DO 300 SEKUND 💛";
     return;
   }
 
   launch.disabled = true;
-  launch.textContent = "💛 GOLDEN CHAOS...";
+  launch.textContent = "💛 ZŁOTY CHAOS...";
   document.body.classList.add("chaos");
   progress.style.display = "block";
   bar.style.transition = "none";
@@ -489,10 +489,10 @@ form.addEventListener("submit", event => {
   setTimeout(() => {
     document.body.classList.remove("chaos");
     launch.disabled = false;
-    launch.textContent = "↻ RUN AGAIN";
+    launch.textContent = "↻ URUCHOM PONOWNIE";
     result.textContent =
-      "SIMULATION COMPLETE 💛 " + power.toUpperCase() +
-      " // SET DURATION: " + duration + " SEC";
+      "SYMULACJA ZAKOŃCZONA 💛 " + power.toUpperCase() +
+      " // USTAWIONY CZAS: " + duration + " SEK";
   }, 3000);
 });
 </script>
