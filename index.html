@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amadeusz Attack 💛</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@500;800;900&display=swap');
+
+:root {
+  --yellow: #ffe600;
+  --gold: #ffb800;
+  --dark: #100e04;
+  --panel: #171407ee;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #fffbea;
+  background:
+    radial-gradient(ellipse at 15% 15%, #55400066, transparent 42%),
+    radial-gradient(ellipse at 85% 80%, #3a290066, transparent 40%),
+    #090803;
+  font-family: Inter, sans-serif;
+}
+
+body.chaos {
+  animation: shake .12s linear 8;
+}
+
+@keyframes shake {
+  0%,100% { transform: translate(0); }
+  25% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, 1px); }
+}
+
+#particles, #imageLayer, #emojiLayer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#particles { z-index: 0; }
+#imageLayer { z-index: 1; overflow: hidden; }
+#emojiLayer { z-index: 4; overflow: hidden; }
+
+.float-img {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 2px solid #ffe600aa;
+  border-radius: 12px;
+  box-shadow: 0 0 18px #ffe60035;
+  opacity: 0;
+  animation: fly linear forwards;
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(105vh) rotate(-20deg);
+    opacity: 0;
+  }
+  12% { opacity: .65; }
+  88% { opacity: .65; }
+  100% {
+    transform: translateY(-20vh) rotate(100deg);
+    opacity: 0;
+  }
+}
+
+.flying-emoji {
+  position: absolute;
+  font-size: 23px;
+  animation: emojiFly linear forwards;
+}
+
+@keyframes emojiFly {
+  from { transform: translateY(105vh) rotate(0); opacity: 0; }
+  15% { opacity: .75; }
+  to { transform: translateY(-15vh) rotate(180deg); opacity: 0; }
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 30px 15px;
+}
+
+.panel {
+  width: min(450px, 100%);
+  padding: 29px;
+  border: 1px solid #ffe60077;
+  border-radius: 19px;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 35px #ffe60013, inset 0 0 25px #ffe60008;
+}
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--yellow);
+  font: 10px Orbitron, sans-serif;
+  letter-spacing: 1px;
+}
+
+.online {
+  color: #ffe600;
+  animation: blink 1.4s steps(2) infinite;
+}
+
+@keyframes blink { 50% { opacity: .35; } }
+
+h1 {
+  margin: 27px 0 8px;
+  font: 900 clamp(30px, 8vw, 43px)/1.2 Orbitron, sans-serif;
+  text-align: center;
+  color: var(--yellow);
+  text-shadow: 0 0 18px #ffe60055;
+}
+
+.subtitle {
+  color: #d4b94b;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 900;
+}
+
+.marquee {
+  margin: 22px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-block: 1px solid #ffe60030;
+  padding: 10px 0;
+  color: var(--yellow);
+  font: 11px Orbitron, sans-serif;
+}
+
+.marquee span {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+label {
+  display: block;
+  margin: 17px 0 8px;
+  color: #e6dcae;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+input, select {
+  width: 100%;
+  height: 46px;
+  padding: 0 13px;
+  color: white;
+  background: #100e06;
+  border: 1px solid #594c1b;
+  border-radius: 9px;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: var(--yellow);
+  box-shadow: 0 0 12px #ffe60022;
+}
+
+select option { background: #100e06; }
+
+button {
+  font-family: Orbitron, sans-serif;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.launch {
+  width: 100%;
+  height: 52px;
+  margin-top: 24px;
+  color: #171200;
+  border: 0;
+  border-radius: 9px;
+  background: linear-gradient(100deg, var(--yellow), var(--gold));
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: .2s;
+}
+
+.launch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 23px #ffe60044;
+}
+
+.launch:disabled { opacity: .7; }
+
+.progress {
+  display: none;
+  height: 5px;
+  margin-top: 17px;
+  background: #342d12;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bar {
+  width: 0;
+  height: 100%;
+  background: var(--yellow);
+}
+
+#result {
+  min-height: 32px;
+  margin-top: 15px;
+  color: var(--yellow);
+  text-align: center;
+  font: 10px Orbitron, sans-serif;
+  line-height: 1.7;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 20px;
+  color: #94854b;
+  font: 9px Orbitron, sans-serif;
+}
+
+.popup {
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 15px;
+  max-width: 90vw;
+  border: 1px solid var(--yellow);
+  border-radius: 8px;
+  background: #211b04f2;
+  color: var(--yellow);
+  font-weight: 900;
+  font-size: 12px;
+  box-shadow: 0 0 18px #ffe60020;
+  pointer-events: none;
+  animation: popup .25s ease-out both;
+}
+
+@keyframes popup {
+  from { opacity: 0; margin-top: 10px; }
+  to { opacity: 1; margin-top: 0; }
+}
+
+@media(max-width: 430px) {
+  .panel { padding: 22px 18px; }
+}
+</style>
+</head>
+
+<body>
+<canvas id="particles"></canvas>
+<div id="imageLayer"></div>
+<div id="emojiLayer"></div>
+
+<main>
+<section class="panel">
+  <div class="topline">
+    <span>AMADEUSZ.EXE</span>
+    <span class="online">● ONLINE</span>
+  </div>
+
+  <h1>AMADEUSZ<br>ATTACK 💛</h1>
+  <div class="subtitle">YELLOW CHAOS EDITION</div>
+
+  <div class="marquee">
+    <span>
+      💛 GOLDEN MODE 💛 AMADEUSZ.EXE 💀 POTATO POWER 🥔
+      💛 GOLDEN MODE 💛 AMADEUSZ.EXE 💀 POTATO POWER 🥔
+    </span>
+  </div>
+
+  <form id="form">
+    <label for="ip">Target IP (visual only)</label>
+    <input id="ip" placeholder="127.0.0.1" required>
+
+    <label for="time">Duration (seconds)</label>
+    <input id="time" type="number" min="1" max="300" value="15" required>
+
+    <label for="power">Chaos Level</label>
+    <select id="power">
+      <option>Bad 💀</option>
+      <option selected>Medium 🤡</option>
+      <option>Good 💛</option>
+    </select>
+
+    <button class="launch" id="launch" type="submit">
+      💛 ACTIVATE CHAOS
+    </button>
+
+    <div class="progress" id="progress">
+      <div class="bar" id="bar"></div>
+    </div>
+    <div id="result" aria-live="polite"></div>
+  </form>
+
+  <div class="bottom">
+    <span>GOLD BUILD</span>
+    <span>PURE NONSENSE</span>
+  </div>
+</section>
+</main>
+
+<script>
+// Golden particle background
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resize() {
+  canvas.width = innerWidth * devicePixelRatio;
+  canvas.height = innerHeight * devicePixelRatio;
+  canvas.style.width = innerWidth + "px";
+  canvas.style.height = innerHeight + "px";
+  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+
+  particles = Array.from({ length: 75 }, () => ({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,
+    r: Math.random() * 1.5 + .5,
+    speed: Math.random() * .65 + .2
+  }));
+}
+
+function draw() {
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  for (const p of particles) {
+    p.y -= p.speed;
+    if (p.y < 0) {
+      p.y = innerHeight;
+      p.x = Math.random() * innerWidth;
+    }
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffe600";
+    ctx.globalAlpha = .65;
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(draw);
+}
+addEventListener("resize", resize);
+resize();
+draw();
+
+// Discover all PNG files in the GitHub repository
+const repoAPI =
+  "https://api.github.com/repos/Men-Projects/data-amadeo-image/git/trees/main?recursive=1";
+
+let imageURLs = [
+  "https://raw.githubusercontent.com/Men-Projects/data-amadeo-image/main/Zrzut%20ekranu%202025-04-08%20190523.png"
+];
+
+const imageLayer = document.getElementById("imageLayer");
+const emojiLayer = document.getElementById("emojiLayer");
+
+fetch(repoAPI)
+  .then(response => {
+    if (!response.ok) throw new Error("GitHub API unavailable");
+    return response.json();
+  })
+  .then(data => {
+    const pngs = (data.tree || [])
+      .filter(file => file.type === "blob" && /\.png$/i.test(file.path))
+      .map(file =>
+        "https://raw.githubusercontent.com/Men-Projects/data-amadeo-image/main/" +
+        file.path.split("/").map(encodeURIComponent).join("/")
+      );
+
+    if (pngs.length) imageURLs = pngs;
+  })
+  .catch(() => console.info("Using fallback PNG list."));
+
+// Images are randomly sized between 60 and 160 pixels
+function spawnImage() {
+  if (!imageURLs.length) return;
+
+  const img = new Image();
+  img.className = "float-img";
+  img.alt = "";
+
+  const size = 60 + Math.random() * 100;
+  img.style.width = size + "px";
+  img.style.height = size + "px";
+  img.style.left = Math.random() * 97 + "%";
+  img.style.animationDuration = (7 + Math.random() * 6) + "s";
+  img.src = imageURLs[Math.floor(Math.random() * imageURLs.length)];
+
+  img.onerror = () => img.remove();
+  img.onload = () => {
+    imageLayer.appendChild(img);
+    setTimeout(() => img.remove(), 14000);
+  };
+}
+
+const emojis = ["💛", "💀", "🥔", "🤡", "🗿", "✨", "🦆"];
+
+function spawnEmoji() {
+  const el = document.createElement("div");
+  el.className = "flying-emoji";
+  el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  el.style.left = Math.random() * 100 + "%";
+  el.style.animationDuration = (5 + Math.random() * 5) + "s";
+  emojiLayer.appendChild(el);
+  setTimeout(() => el.remove(), 11000);
+}
+
+setInterval(spawnImage, 900);
+setInterval(spawnEmoji, 700);
+
+// Occasional silly popups
+const messages = [
+  "POTATO POWER ACTIVATED 🥔",
+  "GOLDEN BRAIN CELL FOUND 💛",
+  "BRO IS COOKING 💀",
+  "DUCK APPROVED 🦆",
+  "CERTIFIED AMADEUSZ MOMENT"
+];
+
+function popup() {
+  const el = document.createElement("div");
+  el.className = "popup";
+  el.textContent = messages[Math.floor(Math.random() * messages.length)];
+  el.style.top = (10 + Math.random() * 65) + "%";
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 1500);
+}
+
+setInterval(popup, 6500);
+
+// Visual-only launch simulation
+const form = document.getElementById("form");
+const launch = document.getElementById("launch");
+const progress = document.getElementById("progress");
+const bar = document.getElementById("bar");
+const result = document.getElementById("result");
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const duration = Number(document.getElementById("time").value);
+  const power = document.getElementById("power").value;
+
+  if (!Number.isFinite(duration) || duration < 1 || duration > 300) {
+    result.textContent = "CHOOSE 1–300 SECONDS 💛";
+    return;
+  }
+
+  launch.disabled = true;
+  launch.textContent = "💛 GOLDEN CHAOS...";
+  document.body.classList.add("chaos");
+  progress.style.display = "block";
+  bar.style.transition = "none";
+  bar.style.width = "0%";
+
+  requestAnimationFrame(() => {
+    bar.style.transition = "width 3s linear";
+    bar.style.width = "100%";
+  });
+
+  popup();
+
+  setTimeout(() => {
+    document.body.classList.remove("chaos");
+    launch.disabled = false;
+    launch.textContent = "↻ RUN AGAIN";
+    result.textContent =
+      "SIMULATION COMPLETE 💛 " + power.toUpperCase() +
+      " // SET DURATION: " + duration + " SEC";
+  }, 3000);
+});
+</script>
+</body>
+</html>
